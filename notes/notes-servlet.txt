@@ -1,0 +1,78 @@
+
+		Servlet--- Java Class---run---webServer 
+
+
+client(browser)----request------------------>WebServer	
+  |						|
+  |					    WebApplication
+  |						|	
+  |					     static-content[html file,image]	
+  |response					|	
+  -----------------------------------------------	
+
+
+	
+
+
+
+Oracle--Java Owner
+  |
+SunMicrosystem
+	  coreJava--JDK
+	  javax(Java Extension)--AdvJava	
+
+Oracle
+  |
+javax(SunMicroSystem)
+  |
+eclipse===>jakarta
+
+	  Servlet(I)	
+	    |
+	GenericServlet(AC)
+	    |
+	HttpServlet(AC)
+	    |
+	FirstServlet(Servlet--class)
+
+Java Class--->Servlet----->Server
+
+class FirstServlet extends HttpServlet						class TestApp1
+{										{
+	service(HttpServletRequest request,HttpServletResponse response)		public static void main(String args[])
+	{										{
+
+	}										}
+}									}
+
+
+----------------------
+	8-requestType
+			Get(default)
+			Post
+			
+http://localhost:8080/fasttrack-first-web-application/
+
+		loginServlet
+			?
+				username=rahul.kirpekar%40gmail.com
+				&
+				password=admin%40123
+
+
+	GET				Post(Important Data)--Security(request Body)
+		request				request
+		1. request Header		1. request Header
+		2. URL(DATA)		 	2. request Body(Data) 
+
+
+
+
+
+
+
+
+
+
+
+
