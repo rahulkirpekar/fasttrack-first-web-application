@@ -1,0 +1,24 @@
+Servlet Colloboration:-
+-----------------------
+
+
+	servlet1----------->servlet2/jsp/html
+
+	jsp--------servlet/html/jsp
+
+
+	1. request:-
+	-----------	
+
+		request.setAttibute("s",sbean);
+
+		RequestDispacher rd = request.getRequestDispacher("servletUrlPattern/home.html/home.jsp");
+		rd.forward(request,response);
+		// rd.include(request,response);
+
+	2. response:-
+	--------------
+
+		response.sendRedirect("www.google.com");
+
+		

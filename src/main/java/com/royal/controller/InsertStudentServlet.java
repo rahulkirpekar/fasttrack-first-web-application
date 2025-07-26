@@ -22,6 +22,9 @@ public class InsertStudentServlet extends HttpServlet
 		String email    =request.getParameter("email");
 		String phone    =request.getParameter("phone");
 		String gender   =request.getParameter("gender");
+		
+		String hobbies[] = request.getParameterValues("hobbies");
+		
 		String course   =request.getParameter("course");
 		String dob  	 =   request.getParameter("dob");
 
@@ -66,6 +69,16 @@ public class InsertStudentServlet extends HttpServlet
 			sbean.setGender(gender); 
 		}		
 
+		// Hobbies--validatation
+		if (  (hobbies == null)  || (hobbies.length == 0)) 
+		{
+			flag = true;
+			request.setAttribute("hobbiesErr", "<font color = 'red'>Please select Hobby.</font>");
+		} else 
+		{
+			sbean.setHobbies(hobbies);
+		}
+		
 		// course--validatation
 		if(!StringUtils.isValidString(course)) 
 		{

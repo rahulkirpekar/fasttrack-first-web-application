@@ -6,6 +6,7 @@ public class StudentBean
 	private String email    =null;
 	private String phone    =null;
 	private String gender   =null;
+	String hobbies[] = null;
 	private String course   =null;
 	private String dob		=null;
 	
@@ -13,13 +14,24 @@ public class StudentBean
 		// TODO Auto-generated constructor stub
 	}
 
-	public StudentBean(String fullname, String email, String phone, String gender, String course, String dob) {
+	public StudentBean(String fullname, String email, String phone, String gender, String hobbies[],String course, String dob) 
+	{
 		this.fullname = fullname;
 		this.email = email;
 		this.phone = phone;
 		this.gender = gender;
+		this.hobbies = hobbies;
 		this.course = course;
 		this.dob = dob;
+	}
+	
+	
+	public String[] getHobbies() {
+		return hobbies;
+	}
+
+	public void setHobbies(String[] hobbies) {
+		this.hobbies = hobbies;
 	}
 
 	public String getFullname() {

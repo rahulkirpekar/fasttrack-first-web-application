@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Student Registration Form</title>
-  <style>
+ <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f0f2f5;
@@ -31,11 +31,12 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-    .gender {
+    .gender, .hobbies {
       display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
-    .gender label {
+    .gender label, .hobbies label {
       margin-top: 0;
     }
     button {
@@ -59,32 +60,68 @@
 <div class="container">
   <h2>Student Registration</h2>
   <form action="insertStudent" method="post">
-    <label for="fname">Full Name</label> ${fullnameErr}
+    <label for="fname">Full Name ${fullnameErr}</label> 
     <input type="text" id="fname" value="${sbean.fullname}" name="fullname" >
 
-    <label for="email">Email Address</label> ${emailErr}
+    <label for="email">Email Address ${emailErr}</label> 
     <input type="email" id="email" value="${sbean.email}" name="email">
 
-    <label for="phone">Phone Number</label>${phoneErr}
+    <label for="phone">Phone Number ${phoneErr}</label>
     <input type="tel" id="phone" value="${sbean.phone}" name="phone">
 
-    <label>Gender</label> ${genderErr}
+    <label>Gender ${genderErr}</label> 
     <div class="gender">
-      <label><input type="radio" name="gender" value="Male" > Male</label>
-      <label><input type="radio" name="gender" value="Female"> Female</label>
-      <label><input type="radio" name="gender" value="Other"> Other</label>
+    	  <label></label>	
+    	  <label></label>	
+      <label></label>	
+      <label></label>	
+    	  <label></label>	
+      <label></label>	
+      <label><input type="radio" name="gender" value="Male" ${sbean.gender=='Male' ? 'checked' : '' } > Male</label>
+      <label><input type="radio" name="gender" value="Female" ${sbean.gender=='Female' ? 'checked' : '' }> Female</label>
+      <label><input type="radio" name="gender" value="Other" ${sbean.gender=='Other' ? 'checked' : ''} > Other</label>
     </div>
+    
+	<label>Hobbies ${hobbiesErr}</label> 
+	<div class="hobbies">
+		<label></label>	
+	    <label></label>	
+	    <label></label>	
+	    	<label></label>	
+	    <label></label>	
+	    	<label><input type="checkbox" name="hobbies" value="Reading" 
+	    			${sbean.hobbies!=null && sbean.hobbies[0].contains('Reading') ? 'checked' : ''}  
+	    			${sbean.hobbies!=null && sbean.hobbies[1].contains('Reading') ? 'checked' : ''} 
+	    			${sbean.hobbies!=null && sbean.hobbies[2].contains('Reading') ? 'checked' : ''}  
+	    			${sbean.hobbies!=null && sbean.hobbies[3].contains('Reading') ? 'checked' : ''}  >Reading</label>
+		<label><input type="checkbox" name="hobbies" value="Sports"  
+				${sbean.hobbies!=null && sbean.hobbies[0].contains('Sports') ? 'checked' : '' }   
+				${sbean.hobbies!=null && sbean.hobbies[1].contains('Sports') ? 'checked' : ''} 
+				${sbean.hobbies!=null && sbean.hobbies[2].contains('Sports') ? 'checked' : ''}  
+				${sbean.hobbies!=null && sbean.hobbies[3].contains('Sports') ? 'checked' : ''} >Sports</label>
+		<label><input type="checkbox" name="hobbies" value="Music"  
+				${sbean.hobbies!=null && sbean.hobbies[0].contains('Music') ? 'checked' : '' } 
+				${sbean.hobbies!=null && sbean.hobbies[1].contains('Music') ? 'checked' : ''} 
+				${sbean.hobbies!=null && sbean.hobbies[2].contains('Music') ? 'checked' : ''}  
+				${sbean.hobbies!=null && sbean.hobbies[3].contains('Music') ? 'checked' : ''} >Music</label>
+		<label><input type="checkbox" name="hobbies" value="Travelling" 
+				${sbean.hobbies!=null && sbean.hobbies[0].contains('Travelling') ? 'checked' : '' }  
+				${sbean.hobbies!=null && sbean.hobbies[1].contains('Travelling') ? 'checked' : ''} 
+				${sbean.hobbies!=null && sbean.hobbies[2].contains('Travelling') ? 'checked' : ''}  
+				${sbean.hobbies!=null && sbean.hobbies[3].contains('Travelling') ? 'checked' : ''} >Travelling</label>
+	</div>
 
-    <label for="course">Course</label>${courseErr}
+
+    <label for="course">Course ${courseErr}</label>
     <select id="course" name="course" >
       <option value="">--Select Course--</option>
-      <option value="BCA">BCA</option>
-      <option value="MCA">MCA</option>
-      <option value="BSc IT">BSc IT</option>
-      <option value="MSc IT">MSc IT</option>
+      <option value="BCA" ${sbean.course == 'BCA' ? 'selected' : ''} >BCA</option>
+      <option value="MCA" ${sbean.course == 'MCA' ? 'selected' : ''}>MCA</option>
+      <option value="BSc IT" ${sbean.course == 'BSc IT' ? 'selected' : ''}>BSc IT</option>
+      <option value="MSc IT" ${sbean.course == 'MSc IT' ? 'selected' : ''}>MSc IT</option>
     </select>
 
-    <label for="dob">Date of Birth</label>${dobErr}
+    <label for="dob">Date of Birth ${dobErr}</label>
     <input type="date" id="dob" value="${sbean.dob}" name="dob">
 
     <button type="submit">Register</button>
