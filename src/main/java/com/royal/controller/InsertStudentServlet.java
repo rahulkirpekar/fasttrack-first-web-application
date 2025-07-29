@@ -3,6 +3,7 @@ package com.royal.controller;
 import java.io.IOException;
 
 import com.royal.bean.StudentBean;
+import com.royal.dao.StudentDao;
 import com.royal.util.StringUtils;
 
 import jakarta.servlet.RequestDispatcher;
@@ -106,7 +107,20 @@ public class InsertStudentServlet extends HttpServlet
 			rd = request.getRequestDispatcher("studregi.jsp");
 		} else 
 		{
-			rd = request.getRequestDispatcher("ListStudentServlet");
+			StudentDao dao = new StudentDao();
+			
+			int rowsAffected = dao.insertStudent(sbean);
+			
+			if (rowsAffected > 0) 
+			{
+				rd = request.getRequestDispatcher("ListStudentServlet");
+				
+			} else 
+			{
+				request.setAttribute("dbErr", "<font color='red'> Check your Database Server</font>");
+				rd = request.getRequestDispatcher("studregi.jsp");
+			}
+			
 		}
 		rd.forward(request, response);
 	}

@@ -7,11 +7,10 @@ public class StringUtils
 		return ((value != null) && (value.trim().length() > 0)) ? true : false;
 
 	}
-	
 	public static void main(String[] args) 
 	{
-		String name = "rahul";
-		System.out.println(StringUtils.isValidString(name));
-		
+//		String name = "rahul";
+//		System.out.println(StringUtils.isValidString(name));
+				
 	}
 }
