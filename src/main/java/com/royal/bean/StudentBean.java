@@ -2,6 +2,7 @@ package com.royal.bean;
 
 public class StudentBean 
 {
+	private int id;
 	private String fullname =null;
 	private String email    =null;
 	private String phone    =null;
@@ -10,10 +11,21 @@ public class StudentBean
 	private String course   =null;
 	private String dob		=null;
 	
-	public StudentBean() {
-		// TODO Auto-generated constructor stub
+	public StudentBean() 
+	{
 	}
 
+	public StudentBean(int id,String fullname, String email, String phone, String gender, String hobbies[],String course, String dob) 
+	{
+		this.id=id;
+		this.fullname = fullname;
+		this.email = email;
+		this.phone = phone;
+		this.gender = gender;
+		this.hobbies = hobbies;
+		this.course = course;
+		this.dob = dob;
+	}
 	public StudentBean(String fullname, String email, String phone, String gender, String hobbies[],String course, String dob) 
 	{
 		this.fullname = fullname;
@@ -26,6 +38,16 @@ public class StudentBean
 	}
 	
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String[] getHobbies() {
 		return hobbies;
 	}

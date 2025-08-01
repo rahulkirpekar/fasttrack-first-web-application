@@ -14,3 +14,17 @@ MySQL:-
     		course VARCHAR(30) NOT NULL,
     		dob DATE NOT NULL
 	);
+-------------------------------------------------------------------------------
+CREATE TABLE students
+	(
+		id int AUTO_INCREMENT PRIMARY KEY,
+		fullname varchar(100) NOT NULL,
+		email varchar(100) NOT NULL,
+		phone varchar(30) NOT NULL,
+		gender ENUM('Male','Female','Other'),
+		hobbies varchar(30) NOT NULL,
+		course	varchar(30) NOT NULL,
+		dob DATE 
+	);
+
+correct
