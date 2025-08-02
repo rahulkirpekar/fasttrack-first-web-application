@@ -4,6 +4,8 @@
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <title>Student Record Page</title>
     <style>
         body {
@@ -50,38 +52,39 @@
             background-color: #f1f1f1;
         }
 
-        /* Buttons */
-        .btn {
-            padding: 6px 12px;
+        /* Icon Buttons */
+        .icon-btn {
+            font-size: 18px;
+            cursor: pointer;
+            padding: 6px;
             border-radius: 5px;
-            font-size: 14px;
             text-decoration: none;
-            font-weight: bold;
+            display: inline-block;
         }
 
-        .btn-edit {
-            background-color: #2196F3;
-            color: white;
+        .edit-icon {
+            color: #2196F3;
         }
 
-        .btn-edit:hover {
-            background-color: #0b7dda;
+        .edit-icon:hover {
+            color: #0b7dda;
+            background-color: rgba(33, 150, 243, 0.1);
         }
 
-        .btn-delete {
-            background-color: #f44336;
-            color: white;
+        .delete-icon {
+            color: #f44336;
+            margin-left: 8px;
         }
 
-        .btn-delete:hover {
-            background-color: #d32f2f;
+        .delete-icon:hover {
+            color: #d32f2f;
+            background-color: rgba(244, 67, 54, 0.1);
         }
     </style>
 </head>
 <body>
 
-    <h1>Student Records</h1>
-
+    <h1>Student Records</h1>${dbError}
     <%
         ArrayList<StudentBean> list = (ArrayList<StudentBean>)request.getAttribute("list");    
     %>
@@ -114,9 +117,15 @@
             <td><%=s.getCourse()%></td>
             <td><%=s.getDob()%></td>
             <td>
-                <a href="EditStudent?id=<%=s.getId()%>" class="btn btn-edit">Edit</a>
-                <a href="DeleteStudent?id=<%=s.getId()%>" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+	            <a href="EditStudentServlet?id=<%=s.getId()%>" class="icon-btn edit-icon" title="Edit"><i class="fas fa-edit"></i></a>
+				<a href="DeleteStudentServlet?id=<%=s.getId()%>" class="icon-btn delete-icon" title="Delete"
+				   onclick="return confirm('Are you sure you want to delete this record?');"> <i class="fas fa-trash-alt"></i>
+				   </a>
             </td>
+            
+            
+            
+            
         </tr>
         <% } %>
     </table>

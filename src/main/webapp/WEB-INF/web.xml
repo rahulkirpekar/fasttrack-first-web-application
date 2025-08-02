@@ -73,5 +73,13 @@
 		<url-pattern>/ListStudentServlet</url-pattern>
 	</servlet-mapping>
   
+    <servlet>
+		<servlet-name>DeleteStudentServlet</servlet-name>
+		<servlet-class>com.royal.controller.DeleteStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DeleteStudentServlet</servlet-name>
+		<url-pattern>/DeleteStudentServlet</url-pattern>
+	</servlet-mapping>
   
 </web-app>

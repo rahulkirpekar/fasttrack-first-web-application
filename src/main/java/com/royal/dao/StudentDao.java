@@ -90,4 +90,35 @@ public class StudentDao
 		System.out.println("new StudentDao().getAllStudentRecords().size() : " + new StudentDao().getAllStudentRecords().size());
 		
 	}
+
+	public int deleteStudent(int id) 
+	{
+		String deleteQuery = "DELETE FROM students WHERE id = ?";
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		int rowsAffected = 0 ;
+		if (conn!=null) 
+		{
+			try 
+			{
+				pstmt = conn.prepareStatement(deleteQuery);
+				
+				pstmt.setInt(1, id);
+				
+				rowsAffected = pstmt.executeUpdate();
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		} else 
+		{
+			System.out.println("Db not connected");
+		}
+		return rowsAffected;
+	}
+
+	public StudentBean getStudentById(int id) 
+	{
+		return null;
+	}
 }
