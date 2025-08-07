@@ -61,7 +61,7 @@
 
 <div class="container">
   <h2>Student Registration</h2>
-  <form action="insertStudent" method="post">
+  <form action="updateStudent" method="post">
     <label for="fname">Full Name ${fullnameErr}</label> 
     <input type="text" id="fname" value="${sbean.fullname}" name="fullname" >
 

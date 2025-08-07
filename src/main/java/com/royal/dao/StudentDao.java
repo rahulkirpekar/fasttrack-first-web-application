@@ -88,7 +88,8 @@ public class StudentDao
 	public static void main(String[] args) 
 	{
 		System.out.println("new StudentDao().getAllStudentRecords().size() : " + new StudentDao().getAllStudentRecords().size());
-		
+//		StudentBean s = new StudentDao().getStudentById(5);
+//		System.out.println(s.getId()+" " + s.getFullname());
 	}
 
 	public int deleteStudent(int id) 
@@ -119,6 +120,34 @@ public class StudentDao
 
 	public StudentBean getStudentById(int id) 
 	{
-		return null;
+		String selectQuery = "SELECT * from students WHERE id = ?";
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		StudentBean s = null;
+		if (conn!=null) 
+		{
+			try 
+			{
+				pstmt = conn.prepareStatement(selectQuery);
+				
+				pstmt.setInt(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				rs.next(); 
+				
+				s = new StudentBean(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), new String[] {rs.getString(6)}, rs.getString(7), rs.getString(8));
+				
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		} else 
+		{
+			System.out.println("Db not connected");
+		}
+		return s;
 	}
+	
 }

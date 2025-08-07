@@ -26,7 +26,7 @@ public class EditStudentServlet extends HttpServlet
 		
 		if (sbean ==  null) 
 		{
-			request.setAttribute("dbError", "<font color='red'> Database Deletion Error</font>");
+			request.setAttribute("dbError", "<font color='red'> Database Connection Error</font>");
 			rd = request.getRequestDispatcher("ListStudentServlet");
 		} else 
 		{
