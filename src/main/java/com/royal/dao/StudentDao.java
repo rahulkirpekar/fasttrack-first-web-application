@@ -85,12 +85,12 @@ public class StudentDao
 		}
 		return list;
 	}
-	public static void main(String[] args) 
-	{
-		System.out.println("new StudentDao().getAllStudentRecords().size() : " + new StudentDao().getAllStudentRecords().size());
-//		StudentBean s = new StudentDao().getStudentById(5);
-//		System.out.println(s.getId()+" " + s.getFullname());
-	}
+//	public static void main(String[] args) 
+//	{
+//		System.out.println("new StudentDao().getAllStudentRecords().size() : " + new StudentDao().getAllStudentRecords().size());
+////		StudentBean s = new StudentDao().getStudentById(5);
+////		System.out.println(s.getId()+" " + s.getFullname());
+//	}
 
 	public int deleteStudent(int id) 
 	{
@@ -149,5 +149,52 @@ public class StudentDao
 		}
 		return s;
 	}
-	
+
+	public int updateStudent(StudentBean sbean) 
+	{
+		String updateQuery = "UPDATE students SET fullname=?,email=?,phone=?,gender=?,hobbies=?,course=?,dob=? WHERE id=?";
+		Connection conn = DBConnection.getConnection();
+		PreparedStatement pstmt = null;
+		int rowsAffected = 0 ;
+		if (conn!=null) 
+		{
+			try 
+			{
+				pstmt = conn.prepareStatement(updateQuery);
+				
+				pstmt.setString(1, sbean.getFullname());
+				pstmt.setString(2, sbean.getEmail());
+				pstmt.setString(3, sbean.getPhone());
+				pstmt.setString(4, sbean.getGender());
+				
+				
+				String h[] = sbean.getHobbies();
+				StringBuilder hobbies = new StringBuilder();
+				for (String hobby : h) 
+				{
+					hobbies.append(hobby+",");
+				}
+				System.out.println("hobbies : " + hobbies);
+				pstmt.setString(5, hobbies.toString());
+				pstmt.setString(6, sbean.getCourse());
+				pstmt.setString(7, sbean.getDob());
+
+				pstmt.setInt(8, sbean.getId());
+				
+				rowsAffected = pstmt.executeUpdate();
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		} else 
+		{
+			System.out.println("Db not connected");
+		}
+		return rowsAffected;
+	}
+	public static void main(String[] args) 
+	{
+		new StudentDao().updateStudent(new StudentBean(5,"Smeet Patel", "smeet@gmail.com", "9876543213", "Male", new String[]{"Sports,Travelling,"}, "BSc IT","1982-05-10"));
+		
+	}
 }

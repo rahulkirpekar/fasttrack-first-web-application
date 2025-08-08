@@ -61,7 +61,13 @@
 
 <div class="container">
   <h2>Student Registration</h2>
-  <form action="updateStudent" method="post">
+  <form action="UpdateStudentServlet" method="post">
+  
+  
+    <label for="id">Full Name ${fullIdErr}</label> 
+   	<input type="text" id="id" value="${sbean.id}" name="id" readonly="readonly">
+  
+  
     <label for="fname">Full Name ${fullnameErr}</label> 
     <input type="text" id="fname" value="${sbean.fullname}" name="fullname" >
 
@@ -126,7 +132,7 @@
     <label for="dob">Date of Birth ${dobErr}</label>
     <input type="date" id="dob" value="${sbean.dob}" name="dob">
 
-    <button type="submit">Register</button>
+    <button type="submit">Update Student</button>
   </form>
 </div>
 
