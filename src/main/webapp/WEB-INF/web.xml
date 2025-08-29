@@ -3,7 +3,7 @@
   <display-name>fasttrack-first-web-application</display-name>
 
 	<welcome-file-list>
-		<welcome-file>studregi.jsp</welcome-file>
+		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
 
@@ -100,6 +100,17 @@
 		<servlet-name>UpdateStudentServlet</servlet-name>
 		<url-pattern>/UpdateStudentServlet</url-pattern>
 	</servlet-mapping>
+  
+  <servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.royal.controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
+  
+  
   
   
 </web-app>

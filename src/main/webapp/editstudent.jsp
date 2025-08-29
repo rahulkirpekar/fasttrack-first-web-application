@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page errorPage="error.jsp" %>
 <%@page import="com.royal.bean.StudentBean"%>
 <html lang="en">
 <head>
@@ -57,12 +58,20 @@
   </style>
 </head>
 <body>
+	<%
+			String name = (String)session.getAttribute("userName");
 
+			if(name == null)
+			{
+				response.sendRedirect("login.jsp");
+			}
+	%>
 
 <div class="container">
   <h2>Student Registration</h2>
   <form action="UpdateStudentServlet" method="post">
   
+  <a href="LogoutServlet"> Logout</a>
   
     <label for="id">Full Name ${fullIdErr}</label> 
    	<input type="text" id="id" value="${sbean.id}" name="id" readonly="readonly">

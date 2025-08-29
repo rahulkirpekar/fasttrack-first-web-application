@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
+<%@page errorPage="error.jsp" %>
 <%@page import="com.royal.bean.StudentBean"%>
 <%@page import="java.util.ArrayList"%>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>Student Record Page</title>
+    <title>Student Record Page</title> 
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -83,8 +83,17 @@
     </style>
 </head>
 <body>
+	<%
+			String name = (String)session.getAttribute("userName");
 
-    <h1>Student Records</h1>${dbError}
+			if(name == null)
+			{
+				response.sendRedirect("login.jsp");
+			}
+	%>
+
+
+    <h1>Student Records</h1>${dbError}	${userName}  <a href="LogoutServlet"> Logout</a>
     <%
         ArrayList<StudentBean> list = (ArrayList<StudentBean>)request.getAttribute("list");    
     %>
@@ -129,6 +138,5 @@
         </tr>
         <% } %>
     </table>
-
 </body>
 </html>

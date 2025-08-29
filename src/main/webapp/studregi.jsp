@@ -1,63 +1,90 @@
 <!DOCTYPE html>
+<%@page errorPage="error.jsp" %>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <title>Student Registration Form</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
-    }
-    .container {
-      width: 400px;
-      margin: 50px auto;
-      background-color: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-    input, select {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .gender, .hobbies {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .gender label, .hobbies label {
-      margin-top: 0;
-    }
-    button {
-      margin-top: 20px;
-      width: 100%;
-      padding: 10px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #45a049;
-    }
+ 
+	 input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	input[type="date"],
+	select {
+	    display: block;
+	    width: 100%;
+	    margin-top: 5px;
+	    padding: 8px;
+	    border-radius: 5px;
+	    border: 1px solid #ccc;
+	    box-sizing: border-box;
+	}
+ 
+     body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: 700;
+            color: #333;
+        }
+        label {
+            font-weight: 500;
+            margin-top: 12px;
+        }
+        .gender, .hobbies {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 5px;
+        }
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+        footer {
+            margin-top: auto;
+            background-color: #fff;
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .form-check-label {
+            margin-left: 5px;
+        }
   </style>
 </head>
 <body>
 
+	<%
+			String name = (String)session.getAttribute("userName");
+
+			if(name == null)
+			{
+				response.sendRedirect("login.jsp");
+			}
+	%>
 <div class="container">
+
   <h2>Student Registration</h2>
   <form action="insertStudent" method="post">
     <label for="fname">Full Name ${fullnameErr}</label> 
@@ -71,12 +98,6 @@
 
     <label>Gender ${genderErr}</label> 
     <div class="gender">
-    	  <label></label>	
-    	  <label></label>	
-      <label></label>	
-      <label></label>	
-    	  <label></label>	
-      <label></label>	
       <label><input type="radio" name="gender" value="Male" ${sbean.gender=='Male' ? 'checked' : '' } > Male</label>
       <label><input type="radio" name="gender" value="Female" ${sbean.gender=='Female' ? 'checked' : '' }> Female</label>
       <label><input type="radio" name="gender" value="Other" ${sbean.gender=='Other' ? 'checked' : ''} > Other</label>

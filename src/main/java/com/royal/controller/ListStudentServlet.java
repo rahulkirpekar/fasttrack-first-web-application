@@ -11,23 +11,28 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ListStudentServlet extends HttpServlet
 {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("ListStudentServlet : doGet()");
+		HttpSession session = request.getSession(false);
 		
-		StudentDao dao  = new StudentDao();
-		
-		ArrayList<StudentBean> list = dao.getAllStudentRecords();
-		
-		request.setAttribute("list", list);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("liststudents.jsp");
-		rd.forward(request, response);
-		
+		if(session == null) 
+		{
+			response.sendRedirect("login.jsp");
+			
+		}else 
+		{
+			System.out.println("ListStudentServlet : doGet()");
+			StudentDao dao  = new StudentDao();
+			ArrayList<StudentBean> list = dao.getAllStudentRecords();
+			request.setAttribute("list", list);
+			RequestDispatcher rd = request.getRequestDispatcher("liststudents.jsp");
+			rd.forward(request, response);
+		}	
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 

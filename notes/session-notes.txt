@@ -1,0 +1,98 @@
+Session Tracking:-
+------------------
+	1. HttpSession
+	2. Cookie
+	3. Hidden form field
+	4. Query string
+-------------------------------------
+Session
+			  session(duration)	
+		START<------------------->END
+
+			Data---share
+			   session
+				
+		login<------------------->logout
+
+	1. request[Single servlet---->Servlet]
+	
+		1000 pages
+
+
+create Session:-
+----------------
+	1. HttpSession session = request.getSession();
+	2. HttpSession session = request.getSession(true);
+	3. HttpSession session = request.getSession(false);
+
+
+
+destroy Session:-
+----------------
+	HttpSession session = request.getSession(false);
+
+	if(session!=null)
+	{
+		session.invalidate();
+	}
+----------------------------------------------------------------------------------------------
+
+
+
+	login--usernamee
+		   /	 ---Authincate(create new session)
+		password	      --------------------
+						|
+				      data---store---session		
+				      -----------------------
+				      access --multiple jsps/servlet	
+				      -----------------------
+						logout--session--destroy
+						  |
+						home.jsp
+						  |
+						login.jsp
+
+
+
+
+	mall-------tolly(1)----tolly(1+1)
+			      ------------
+				  |
+				logout(Billing department)
+				  |
+				session--trolly--	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

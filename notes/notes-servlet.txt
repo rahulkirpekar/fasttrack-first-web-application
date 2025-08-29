@@ -69,6 +69,79 @@ http://localhost:8080/fasttrack-first-web-application/
 
 
 
+	html--tags---JavaCode---X
+
+	filter
+
+	100 students --display--loop
+
+	Jsp---Java Server Pages
+
+		Jsp = [HTML code(tags) + Java Code]
+
+	JSP--->servlet
+
+	home.jsp---home_jsp.java(servlet)
+		   --------------
+			|
+		   home_jsp.class
+		   --------------
+			|
+		     WebServer--JRE		
+
+public class home_jsp extends HttpJspBase
+{
+	void service(HttpReqest , HttpResponse)
+	{
+		for(int i=0;i<10;i++)
+		{
+
+		}
+	}
+}
+
+Java Code----->jsp
+
+Scripting Elements:-
+---------------------
+	1. scriptlet ---jsp--servlet---service(){code}
+		<%
+			for(int i=0;i<10;i++)
+			{
+
+			}
+		%>
+	2. Declaration Tag
+
+		<%!
+			int addFun(int no1,int no2)
+			{
+				return (no1+no2);
+			}
+		%>
+
+	3.expression tag
+
+		<%=10+20%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
