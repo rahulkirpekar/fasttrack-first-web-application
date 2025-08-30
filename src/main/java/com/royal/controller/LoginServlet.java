@@ -2,6 +2,8 @@ package com.royal.controller;
 
 import java.io.IOException;
 
+import com.royal.dao.UserDao;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -26,7 +28,9 @@ public class LoginServlet extends HttpServlet
 		
 		if(	((userName!=null) && (userName.trim().length() > 0)) 	&& (((password!=null) && (password.trim().length() > 0)))	) 
 		{
-			if((userName.trim().equals("rahulkirpekar")) && (password.trim().equals("rahul@123"))) 
+//			if((userName.trim().equals("rahulkirpekar")) && (password.trim().equals("rahul@123"))) 
+			
+			if(UserDao.authenticUser(userName.trim(), password.trim()))
 			{
 				// create session object
 				session = request.getSession();

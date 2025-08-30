@@ -1,0 +1,25 @@
+
+session create
+	username and password
+
+	session create
+	---------------
+	     |
+	     --HttpSession session = request.getSession();	
+
+
+	     --HttpSession session = request.getSession(false);	
+
+
+
+
+logout
+ |
+ --LogoutServlet
+	|
+	HttpSession session  = request.getSession(false);	
+	if(session!=null)
+	{
+		session.invalidate();
+		response.sendRedirect("hom.jsp");
+	}
